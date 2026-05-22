@@ -1090,4 +1090,28 @@ body {
   }
 }
 
+/* --- KODE PERAPI TAMPILAN HP --- */
+@media screen and (max-width: 768px) {
+  /* 1. Membunuh jarak kosong raksasa di layar HP */
+  .hero {
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 40px !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* 2. Memaksa teks dan foto profil numpuk atas-bawah (biar ga jejeran lagi) */
+  .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 30px !important; /* Jarak antar teks dan foto */
+  }
+
+  /* 3. Menyesuaikan lebar kotak foto profil */
+  .hero-content img, .profile-card, .card {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+}
 
