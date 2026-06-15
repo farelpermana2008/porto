@@ -381,21 +381,37 @@ h2 {
 }
 
 
-/* SECTION ABOUT ME */
+/* SECTION ABOUT ME - RESPONSIVE FIX */
 .about-grid {
     display: flex;
-    gap: 40px;
+    flex-direction: column-reverse; /* Default HP: Foto di atas, teks di bawah */
+    gap: 30px;
     align-items: center;
+    text-align: center; /* Teks dibuat ke tengah agar lebih rapi di HP */
 }
 
 .about-text {
-    flex: 2;
+    flex: 1;
+    width: 100%;
 }
 
 .about-image-card {
     flex: 1;
     display: flex;
     justify-content: center;
+    width: 100%;
+}
+
+/* Tampilan Desktop (Layar Laptop/Tablet Besar) */
+@media (min-width: 768px) {
+    .about-grid {
+        flex-direction: row; /* Kembali menyamping: Teks Kiri, Foto Kanan */
+        text-align: left;    /* Teks rata kiri di laptop */
+    }
+    
+    .about-text {
+        flex: 2; /* Teks mengambil porsi layar lebih besar di desktop */
+    }
 }
 
 .tag-glow {
@@ -1114,4 +1130,126 @@ body {
     margin: 0 auto !important;
   }
 }
+
+/* =========================================
+   1. KODE LAMA KAMU (Tampilan Dasar / HP)
+   Taruh semua styling utama di atas sini
+========================================= */
+.text {
+    color: black;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.container {
+    width: 100%;
+}
+
+/* =========================================
+   2. KODE MEDIA QUERY 
+   Taruh di bagian paling bawah file CSS 
+========================================= */
+@media (min-width: 768px) {
+    /* Kode di sini akan menimpa kode lama kamu khusus untuk layar Tablet */
+    .text {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Kode di sini akan menimpa kode sebelumnya khusus untuk layar Laptop */
+    .text {
+        font-size: 32px;
+    }
+}
+
+/* --- TAMPILAN DEFAULT (HP) --- */
+.product-container {
+    display: grid;
+    /* Membuat 2 kolom sama rata, dan otomatis turun ke bawah jika penuh */
+    grid-template-columns: repeat(2, 1fr); 
+    /* Jarak antar kartu (bisa kamu sesuaikan) */
+    gap: 15px; 
+    padding: 15px;
+}
+
+/* Mengatur masing-masing kartu produk agar fleksibel */
+.product-card {
+    background-color: #12141c; /* Warna gelap seperti di gambar */
+    border-radius: 15px;
+    padding: 15px;
+    width: 100%; /* Wajib 100% agar lebarnya mengikuti kolom grid */
+    box-sizing: border-box;
+}
+
+/* Mengatur gambar/logo aplikasi di dalam kartu */
+.product-card img {
+    width: 60px; /* Ukuran icon di HP agar tidak kebesaran */
+    height: 60px;
+    border-radius: 12px;
+}
+
+.product-title {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap; /* Mengizinkan elemen turun ke baris baru jika layar HP terlalu kecil */
+    justify-content: center; /* Pusatkan di HP */
+    gap: 15px; /* Memberi jarak antar item agar tidak dempet */
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        justify-content: space-between; /* Kembali menyebar di layar laptop */
+    }
+}
+
+/* KODE PENYELAMAT FOTO HERO DI HP */
+@media screen and (max-width: 768px) {
+    .hero-image-card {
+        display: flex !important;
+        height: 420px !important; /* Memaksa tinggi kartu muncul kembali */
+        width: 100% !important;
+        max-width: 320px !important; /* Mengatur lebar kartu agar pas di layar HP */
+        margin: 30px auto !important; /* Memposisikan kartu tepat di tengah */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    /* TARGETKAN BAGIAN INI UNTUK MENGATUR UKURAN TEKS KETIKAN */
+    .hero-text h1 {
+        font-size: 1.5rem !important; /* <--- Ganti angka 2rem ini (misal: 1.8rem atau 2.2rem) untuk mengatur ukurannya */
+        line-height: 1.3 !important;
+        margin: 15px 0 !important;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    
+    /* MEMBUAT SEMUA TAG P MENJADI RATA KANAN-KIRI */
+    p {
+        text-align: justify !important;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+    /* MEMAKSA KONTAINER TEKS HERO UNTUK MELEBAR FULL DI HP */
+    .hero-text {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+}
+
 
